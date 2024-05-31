@@ -6,7 +6,7 @@
 /*   By: oadewumi <oadewumi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:19:53 by oadewumi          #+#    #+#             */
-/*   Updated: 2024/05/31 20:56:24 by oadewumi         ###   ########.fr       */
+/*   Updated: 2024/05/31 21:29:35 by oadewumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ static void	ft_send_bits(int pid, unsigned char c)
 		if ((temp_c >> i) & 1)
 		{
 			if (kill(pid, SIGUSR2) == -1)
-				client_err_msg("kill function failed (SIGUSR2)\n");
+				client_err_msg("kill function failed (SIGUSR2)");
 		}
 		else
 		{
 			if (kill(pid, SIGUSR1) == -1)
-				client_err_msg("kill function failed (SIGUSR1)\n");
+				client_err_msg("kill function failed (SIGUSR1)");
 		}
 		usleep(150);
 	}

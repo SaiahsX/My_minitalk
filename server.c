@@ -6,7 +6,7 @@
 /*   By: oadewumi <oadewumi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:20:06 by oadewumi          #+#    #+#             */
-/*   Updated: 2024/05/30 20:59:12 by oadewumi         ###   ########.fr       */
+/*   Updated: 2024/05/31 21:27:14 by oadewumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ int	main(void)
 	while (1)
 	{
 		if (sigaction(SIGUSR1, &sa, NULL) == -1)
-			server_err_msg("sigaction failed (SIGUSR1)\n");
+			server_err_msg("sigaction failed (SIGUSR1)");
 		if (sigaction(SIGUSR2, &sa, NULL) == -1)
-			server_err_msg("sigaction failed (SIGUSR2)\n");
+			server_err_msg("sigaction failed (SIGUSR2)");
 		pause();
 	}
 }

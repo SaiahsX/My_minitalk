@@ -6,7 +6,7 @@
 /*   By: oadewumi <oadewumi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 21:08:23 by oadewumi          #+#    #+#             */
-/*   Updated: 2024/05/31 20:53:03 by oadewumi         ###   ########.fr       */
+/*   Updated: 2024/05/31 21:28:46 by oadewumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	print_and_destroy(char **str)
 //Static variables (both local and global) are initialized 
 //to 0 (for arithmetic types) or NULL (for pointers) if not explicitly 
 //initialized.
+//the pointer to the variable "context" was made a void since its unused.
 static void	handler(int signum, siginfo_t *info, void *context)
 {
 	static int				i;
@@ -82,9 +83,9 @@ int	main(void)
 	while (1)
 	{
 		if (sigaction(SIGUSR1, &sa, NULL) == -1)
-			server_err_msg("sigaction failed (SIGUSR1)\n");
+			server_err_msg("sigaction failed (SIGUSR1)");
 		if (sigaction(SIGUSR2, &sa, NULL) == -1)
-			server_err_msg("sigaction failed (SIGUSR2)\n");
+			server_err_msg("sigaction failed (SIGUSR2)");
 		pause();
 	}
 }
