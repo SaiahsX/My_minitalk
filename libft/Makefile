@@ -33,6 +33,7 @@ SRCS     =   ft_atoi.c \
             ft_strmapi.c \
             ft_striteri.c \
             ft_printf.c \
+            ft_print_bits.c \
 			print_hexadecimal.c \
 			print_str_fd.c \
 			print_nbr_fd.c \
@@ -62,27 +63,27 @@ NAME    =    libft.a
 
 all:        $(NAME)
 
-$(NAME):    $(OFILES)
-		ar -rcs $(NAME) $(OFILES)
+$(NAME):    $(OFILES) $(BOFILES)
+		@ ar -rcs $(NAME) $(OFILES) $(BOFILES)
 
 BONUS = .bonus
 
 bonus:  ${BONUS}
 
 ${BONUS}:   $(OFILES) $(BOFILES)
-		ar -rcs $(NAME)  $(OFILES) $(BOFILES)
+		@ ar -rcs $(NAME)  $(OFILES) $(BOFILES)
 		touch ${BONUS}
 
 ${BOFILES}:     ${BONUS_SRCS}
-		cc	${CFLAGS}	-c ${BONUS_SRCS}	-I	libft.h
+		@ cc	${CFLAGS}	-c ${BONUS_SRCS}	-I	libft.h
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	@ $(CC) -c $(CFLAGS) $?
 
 clean:
-	$(RM) $(OFILES) $(BOFILES) $(BONUS)
+	@ $(RM) $(OFILES) $(BOFILES) $(BONUS)
 fclean: clean
-	$(RM) $(NAME)
+	@ $(RM) $(NAME)
 
 re: fclean $(NAME)
 

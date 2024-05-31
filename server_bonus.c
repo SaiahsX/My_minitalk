@@ -6,7 +6,7 @@
 /*   By: oadewumi <oadewumi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 21:08:23 by oadewumi          #+#    #+#             */
-/*   Updated: 2024/05/30 21:25:29 by oadewumi         ###   ########.fr       */
+/*   Updated: 2024/05/31 20:53:03 by oadewumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,9 @@ int	main(void)
 	struct sigaction	sa;
 
 	ft_printf("Process ID (PID): %d\n", getpid());
-	sa.sa_handler = handler;
+	sa.sa_sigaction = handler;
 	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_RESTART | SA_SIGINFO;
 	while (1)
 	{
 		if (sigaction(SIGUSR1, &sa, NULL) == -1)

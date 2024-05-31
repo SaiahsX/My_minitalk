@@ -6,7 +6,7 @@
 /*   By: oadewumi <oadewumi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:19:53 by oadewumi          #+#    #+#             */
-/*   Updated: 2024/05/30 20:15:35 by oadewumi         ###   ########.fr       */
+/*   Updated: 2024/05/31 20:56:24 by oadewumi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,20 @@ int	main(int argc, char *argv[])
 	if (argc != 3)
 	{
 		if (argc < 3)
-			client_err_msg("Too few arguments darling");
-		client_err_msg("Too many arguments mate");
+			client_err_msg("Too few args, Use format: ./client PID string");
+		client_err_msg("Too many args, Use format: ./client PID string");
 	}
 	else
 	{
 		validate_argument (&argv[1][0]);
 		pid = ft_atoi(argv[1]);
+		if (pid <= 0)
+			client_err_msg ("Invalid PID (ft_atoi failed/No PID)");
 		str_sent = argv[2];
+		if (str_sent[0] == 0)
+			client_err_msg ("a string is needed for transmission");
 		while (str_sent[i])
-		{
-			ft_send_bits(pid, (unsigned char)str_sent[i]);
-			i++;
-		}
+			ft_send_bits(pid, (unsigned char)str_sent[i++]);
 		ft_send_bits(pid, '\0');
 	}
 	return (0);
